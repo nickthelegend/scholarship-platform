@@ -9,6 +9,9 @@ import { motion, AnimatePresence } from "framer-motion"
 import { useWallet } from "@txnlab/use-wallet-react"
 import ConnectWalletModal from "./connect-wallet-modal"
 
+// Create a context to share the wallet modal state
+// No context needed here anymore
+
 const Nav = () => {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)

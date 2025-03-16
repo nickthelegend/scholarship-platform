@@ -1,6 +1,10 @@
 "use client"
 import { Search, GraduationCap, Filter } from "lucide-react"
 import { motion } from "framer-motion"
+import dynamic from "next/dynamic"
+
+// Use dynamic import with no SSR to avoid hydration issues
+const WalletAuthWrapper = dynamic(() => import("@/components/wallet-auth-wrapper"), { ssr: false })
 
 export default function FindScholarship() {
   // Sample scholarship data for demonstration
@@ -62,7 +66,7 @@ export default function FindScholarship() {
     },
   }
 
-  return (
+  const ScholarshipContent = () => (
     <main className="flex-grow pt-24 pb-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div initial="hidden" animate="visible" variants={fadeIn} className="mb-10">
@@ -145,6 +149,12 @@ export default function FindScholarship() {
         </motion.div>
       </div>
     </main>
+  )
+
+  return (
+    <WalletAuthWrapper>
+      <ScholarshipContent />
+    </WalletAuthWrapper>
   )
 }
 
