@@ -1,8 +1,37 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 10, 10, 20;
+  --background-end-rgb: 5, 5, 15;
+
+  /* New theme colors */
+  --primary: 261, 73%, 60%;
+  --primary-foreground: 0, 0%, 100%;
+
+  --secondary: 221, 83%, 53%;
+  --secondary-foreground: 210, 40%, 98%;
+
+  --accent: 342, 92%, 65%;
+  --accent-foreground: 0, 0%, 100%;
+
+  --muted: 217, 33%, 17%;
+  --muted-foreground: 215, 20%, 65%;
+
+  --card: 222, 47%, 11%;
+  --card-foreground: 213, 31%, 91%;
+
+  --popover: 222, 47%, 11%;
+  --popover-foreground: 215, 20%, 65%;
+
+  --border: 216, 34%, 17%;
+  --input: 216, 34%, 17%;
+
+  --destructive: 0, 63%, 31%;
+  --destructive-foreground: 210, 40%, 98%;
+
+  --ring: 216, 34%, 17%;
+  --radius: 0.5rem;
 }
 
 @theme inline {
@@ -23,4 +52,66 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulseSlight {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+@keyframes glowPulse {
+  0%, 100% {
+    box-shadow: 0 0 0 rgba(100, 150, 200, 0);
+  }
+  50% {
+    box-shadow: 0 0 15px rgba(100, 150, 200, 0.5);
+  }
+}
+
+
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  .mobile-menu {
+    @apply fixed inset-0 z-50 bg-black/90 backdrop-blur-lg flex flex-col items-center justify-center;
+  }
+
+  .mobile-nav-item {
+    @apply text-xl py-4 w-full text-center;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.2) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
 }
